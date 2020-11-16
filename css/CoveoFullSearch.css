@@ -7278,12 +7278,12 @@
 }
 
 .coveo-radio input[type='radio']:checked + label:before {
-  border: 2px solid #4caf50;
+  border: 2px solid #3a833c;
 }
 
 .coveo-radio input[type='radio']:checked + label:after {
   z-index: 0;
-  background-color: #4caf50;
+  background-color: #3a833c;
   transform: scale(0.5);
 }
 
@@ -9203,12 +9203,12 @@ a.CoveoResultLink.coveo-selected *,
 }
 
 .coveo-radio input[type='radio']:checked + label:before {
-  border: 2px solid #4caf50;
+  border: 2px solid #3a833c;
 }
 
 .coveo-radio input[type='radio']:checked + label:after {
   z-index: 0;
-  background-color: #4caf50;
+  background-color: #3a833c;
   transform: scale(0.5);
 }
 
@@ -10813,6 +10813,7 @@ ul.coveo-facet-breadcrumb-values {
   background: white;
   position: relative;
   top: 2px;
+  flex-shrink: 0;
 }
 
 .coveo-facet-value .coveo-facet-value-checkbox > svg {
@@ -11141,6 +11142,7 @@ ul.coveo-facet-breadcrumb-values {
   background: white;
   position: relative;
   top: 2px;
+  flex-shrink: 0;
 }
 
 .coveo-facet-search-results .coveo-facet-value .coveo-facet-value-checkbox > svg {
@@ -17445,8 +17447,8 @@ li.coveo-dynamic-facet-breadcrumb-value-list-item {
 */
 
 .coveo-dynamic-facet-header {
-  padding: 8px 0;
   border-bottom: thin solid #bcc3ca;
+  height: 35px;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -17464,6 +17466,7 @@ li.coveo-dynamic-facet-breadcrumb-value-list-item {
   text-overflow: ellipsis;
   overflow: hidden;
   text-transform: capitalize;
+  line-height: 35px;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
   flex-grow: 1;
@@ -17499,6 +17502,11 @@ li.coveo-dynamic-facet-breadcrumb-value-list-item {
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+.coveo-dynamic-facet-header-collapse,
+.coveo-dynamic-facet-header-expand {
+  height: 100%;
 }
 
 .coveo-dynamic-facet-collapse-toggle-svg {
@@ -18308,6 +18316,520 @@ button.coveo-dynamic-hierarchical-facet-all {
 
 .CoveoSortDropdown .CoveoSort {
   display: none;
+}
+
+/*
+* @param direction vertical or horizontal
+* @param position type of positioning to apply (relative/absolute)
+*/
+
+/*
+* @param $selector css selector on which to apply the icon. Can be '&' if the icon should be applied on the current element;
+* @param $size size of the icon to use
+*/
+
+.CoveoSmartSnippet {
+  margin-top: 30px;
+  display: none;
+}
+
+.CoveoSmartSnippet.coveo-smart-snippet-has-answer {
+  display: block;
+}
+
+.coveo-smart-snippet-question {
+  font-size: 18px;
+  border-bottom: 2px solid #dee1e4;
+  padding-bottom: 10px;
+}
+
+.coveo-smart-snippet-answer {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #dee1e4;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.coveo-smart-snippet-content {
+  transition: height ease-in-out 0.5s;
+  overflow: hidden;
+}
+
+.coveo-height-limiter-container-active {
+  position: relative;
+}
+
+.coveo-height-limiter-container-active::after {
+  content: '';
+  background-color: rgba(255, 255, 255, 0);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), white);
+  background-image: linear-gradient(to bottom,rgba(255, 255, 255, 0), white);
+  pointer-events: none;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 64px;
+  bottom: 0;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.coveo-height-limiter-container-active.coveo-height-limiter-container-expanded::after {
+  opacity: 0;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button.coveo-height-limiter-button-active {
+  display: flex;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button {
+  border: none;
+  align-self: center;
+  padding: 8px;
+  background: none;
+  color: #0059b3;
+  cursor: pointer;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button:hover,
+.coveo-smart-snippet-answer .coveo-height-limiter-button:focus {
+  text-decoration: underline;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button-label {
+  font-size: 16px;
+  margin-right: 16px;
+}
+
+.coveo-smart-snippet-answer .coveo-height-limiter-button-icon {
+  display: inline-block;
+  width: 24px;
+  height: 14px;
+}
+
+.coveo-smart-snippet-source {
+  margin-top: 24px;
+}
+
+.coveo-smart-snippet-source-url {
+  display: block;
+  color: #657381;
+  text-decoration: none;
+}
+
+.coveo-smart-snippet-source-url:hover,
+.coveo-smart-snippet-source-url:focus {
+  text-decoration: underline;
+}
+
+.coveo-smart-snippet-source-title {
+  margin-top: 8px;
+  display: block;
+  font-size: 22px;
+  color: #0059b3;
+  text-decoration: none;
+}
+
+.coveo-smart-snippet-source-title:hover,
+.coveo-smart-snippet-source-title:focus {
+  text-decoration: underline;
+}
+
+.coveo-user-feedback-banner-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 8px 8px;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.coveo-user-feedback-banner-buttons {
+  display: flex;
+  overflow: visible;
+}
+
+.coveo-user-feedback-banner-buttons button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 18px;
+  display: inline-flex;
+  align-items: center;
+  fill: #313a45;
+  color: #313a45;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.coveo-user-feedback-banner-buttons button:hover,
+.coveo-user-feedback-banner-buttons button:focus {
+  text-decoration: underline;
+}
+
+.coveo-user-feedback-banner-buttons button.coveo-user-feedback-banner-button-active {
+  cursor: default;
+}
+
+.coveo-user-feedback-banner-buttons button.coveo-user-feedback-banner-button-active:hover,
+.coveo-user-feedback-banner-buttons button.coveo-user-feedback-banner-button-active:focus {
+  text-decoration: none;
+}
+
+.coveo-user-feedback-banner-thanks-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+}
+
+.coveo-user-feedback-banner-button-active .coveo-user-feedback-banner-thanks-icon {
+  overflow: visible;
+  position: relative;
+}
+
+.coveo-user-feedback-banner-button-active .coveo-user-feedback-banner-thanks-icon::before {
+  content: ' ';
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 7px;
+  border-bottom-color: #486fc7;
+}
+
+.coveo-user-feedback-banner-button-active.coveo-user-feedback-banner-yes-button {
+  color: #3a833c;
+  fill: #3a833c;
+}
+
+.coveo-user-feedback-banner-button-active.coveo-user-feedback-banner-no-button {
+  color: #cc0d00;
+  fill: #cc0d00;
+}
+
+.coveo-user-feedback-banner-thanks {
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #486fc7;
+  border-radius: 2px;
+  color: white;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.coveo-user-feedback-banner-thanks-active {
+  height: auto;
+}
+
+.coveo-user-feedback-banner-thanks > * {
+  margin: 8px 16px 8px 0;
+}
+
+button.coveo-user-feedback-banner-explain-why {
+  border: none;
+  background: none;
+  padding: 0;
+  color: white;
+  font-weight: normal;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  display: none;
+}
+
+button.coveo-user-feedback-banner-explain-why:hover,
+button.coveo-user-feedback-banner-explain-why:focus {
+  text-decoration: none;
+}
+
+button.coveo-user-feedback-banner-explain-why-active {
+  display: inline;
+}
+
+/*
+* @param direction vertical or horizontal
+* @param position type of positioning to apply (relative/absolute)
+*/
+
+/*
+* @param $selector css selector on which to apply the icon. Can be '&' if the icon should be applied on the current element;
+* @param $size size of the icon to use
+*/
+
+.coveo-user-explanation-modal-explanation-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations,
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details {
+  margin: 16px;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations-label,
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details-label {
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations {
+  border: none;
+  padding: 0;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio'] + .coveo-radio-input-label {
+  line-height: 24px;
+  height: 24px;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio'] + .coveo-radio-input-label::before,
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio'] + .coveo-radio-input-label::after {
+  width: 24px;
+  height: 24px;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio'] + .coveo-radio-input-label::before {
+  border-color: #657381;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio']:checked + .coveo-radio-input-label::before {
+  border-color: #c65306;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-explanations .coveo-radio input[type='radio']:checked + .coveo-radio-input-label::after {
+  background-color: #c65306;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details-textarea {
+  border: thin solid #7e8c9a;
+  border-radius: 2px;
+  min-width: 256px;
+  min-height: 128px;
+  resize: none;
+  flex-grow: 1;
+  align-self: stretch;
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 1em;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details-textarea[disabled] {
+  background-color: #ddd;
+  color: #616161;
+}
+
+.coveo-user-explanation-modal-explanation-section .coveo-user-explanation-modal-details-textarea:focus {
+  border-color: #943e05;
+}
+
+.coveo-user-explanation-modal-buttons-section {
+  display: flex;
+  justify-content: flex-end;
+  border-top: thin solid #d8d8d8;
+  padding: 24px 32px;
+}
+
+.coveo-user-explanation-modal-buttons-section button {
+  border-radius: 2px;
+  font-size: 1em;
+  margin: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-send-button {
+  background-color: #c65306;
+  color: white;
+  border: none;
+}
+
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-send-button:hover,
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-send-button:focus {
+  background-color: #943e05;
+}
+
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-cancel-button {
+  background: none;
+  color: #657381;
+  border: thin solid #657381;
+  margin-left: 24px;
+}
+
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-cancel-button:hover,
+.coveo-user-explanation-modal-buttons-section .coveo-user-explanation-modal-cancel-button:focus {
+  background-color: #0000001a;
+}
+
+.coveo-user-explanation-modal.coveo-modal-container > .coveo-modal-content {
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: #00000040 2px 2px 5px;
+}
+
+.coveo-user-explanation-modal .coveo-modal-body {
+  padding: 0;
+  flex-basis: auto;
+}
+
+.coveo-user-explanation-modal .coveo-modal-header {
+  height: auto;
+  padding: 0;
+  border: none;
+}
+
+.coveo-user-explanation-modal .coveo-modal-header h1 {
+  color: black;
+  margin: 40px 40px 24px;
+  font-size: 1.25em;
+}
+
+.coveo-user-explanation-modal + .coveo-modal-backdrop {
+  background-color: black;
+  opacity: 0.3;
+}
+
+.coveo-shadow-iframe {
+  display: block;
+  border: none;
+  width: 100%;
+}
+
+/*
+* @param direction vertical or horizontal
+* @param position type of positioning to apply (relative/absolute)
+*/
+
+/*
+* @param $selector css selector on which to apply the icon. Can be '&' if the icon should be applied on the current element;
+* @param $size size of the icon to use
+*/
+
+.CoveoSmartSnippetSuggestions {
+  display: none;
+  margin: 16px 0;
+  border: 2px solid #dee1e4;
+  border-radius: 4px;
+}
+
+.CoveoSmartSnippetSuggestions.coveo-smart-snippet-suggestions-has-questions {
+  display: block;
+}
+
+.coveo-smart-snippet-suggestions-questions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coveo-smart-snippet-suggestions-questions-title {
+  display: block;
+  padding: 16px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.coveo-smart-snippet-suggestions-question-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #dee1e4;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.coveo-smart-snippet-suggestions-question-title-label {
+  user-select: none;
+}
+
+.coveo-smart-snippet-suggestions-question-title-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  color: #1d4f76;
+  flex-shrink: 0;
+  margin-left: 1.2em;
+}
+
+.coveo-smart-snippet-suggestions-question-title-checkbox svg {
+  width: 100%;
+  height: 100%;
+}
+
+.coveo-smart-snippet-suggestions-question-snippet {
+  overflow: hidden;
+}
+
+.coveo-smart-snippet-suggestions-question-snippet-hidden {
+  height: 0;
+}
+
+.coveo-smart-snippet-suggestions-question-snippet-content {
+  padding: 8px 16px;
+}
+
+.coveo-smart-snippet-suggestions-question-source {
+  margin-top: 24px;
+}
+
+.coveo-smart-snippet-suggestions-question-source-url,
+.coveo-smart-snippet-suggestions-question-source-title {
+  padding: 0 16px;
+}
+
+.coveo-smart-snippet-suggestions-question-source-url {
+  display: block;
+  color: #657381;
+  text-decoration: none;
+}
+
+.coveo-smart-snippet-suggestions-question-source-url:hover,
+.coveo-smart-snippet-suggestions-question-source-url:focus {
+  text-decoration: underline;
+}
+
+.coveo-smart-snippet-suggestions-question-source-title {
+  margin-top: 8px;
+  display: block;
+  font-size: 19px;
+  color: #0059b3;
+  text-decoration: none;
+  padding-bottom: 16px;
+}
+
+.coveo-smart-snippet-suggestions-question-source-title:hover,
+.coveo-smart-snippet-suggestions-question-source-title:focus {
+  text-decoration: underline;
 }
 
 
